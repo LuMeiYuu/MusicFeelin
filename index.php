@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song Categorizer</title>
     <link type="text/css" href="style.css" rel="stylesheet">
+    <style>
+    .genre-box {
+    transition: all 0.2s ease;
+    min-width: 100px;
+    text-align: center;
+}
+
+.genre-box:hover {
+    background-color: #e0e0e0;
+}
+
+.genre-box.selected {
+    background-color:rgb(0, 0, 0);
+    color: white;
+    border-color:rgb(0, 0, 0) !important;
+}</style>
    
    
 </head>
@@ -24,11 +40,11 @@ if ($conn->connect_error) {
 
 // Fetch genres for the dropdown
 // Fetch genres
-$sql_genres = "SELECT id, genre FROM genre";
+$sql_genres = "SELECT id, genre, color FROM genre";
 $result_genres = $conn->query($sql_genres);
 
 // Fetch moods
-$sql_moods = "SELECT id, mood FROM mood";
+$sql_moods = "SELECT id, mood, color FROM mood";
 $result_moods = $conn->query($sql_moods);
 
 // Check for errors (optional)
@@ -97,22 +113,32 @@ if (!$result_genres || !$result_moods) {
         <label for="songLink">Song Link:</label>
         <input type="text" id="songLink" name="songLink" required><br><br>
         
+        <label for="songLink">Select genre:</label>
+        <div class="genre-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0;">
+    <?php
+    if ($result_genres->num_rows > 0) {
+        while ($row = $result_genres->fetch_assoc()) {
+            echo '<div class="genre-box" 
+                      data-genre-id="' . $row['id'] . '" 
+                      style="padding: 3px;
+                              background-color: ' . $row['color'] . ';
+                             cursor: pointer;
+                             border: 2px solid white;
+                             border-radius: 10px;
+                             color: #8b919
+                             ">
+                    ' . htmlspecialchars($row['genre']) . '
+                  </div>';
+        }
+    } else {
+        echo "<p>No genres available</p>";
+    }
+    ?>
+</div>
 
-        <label for="genre">Choose Genre:</label>
-        <select id="genre" name="genre" required>
-            <option value="">--Select Genre--</option>
+<!-- Hidden input to store selected genres -->
+<input type="hidden" name="genre_id" id="genre_id" value="" required>
 
-            <?php
-            if ($result_genres->num_rows > 0) {
-                while ($row = $result_genres->fetch_assoc()) {
-                    echo "<option value='{$row['id']}'>{$row['genre']}</option>";
-                }
-            } else {
-                echo "<option value=''>No genres available</option>";
-            }
-            ?>
-            
-        </select><br><br>
         <label for="mood">Choose Mood:</label>
         <select id="mood" name="mood" required>
         
@@ -199,6 +225,31 @@ if (!$result_genres || !$result_moods) {
                 console.error('Error:', error);
             });
         });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const genreBoxes = document.querySelectorAll('.genre-box');
+    const selectedGenres = new Set();
+
+    genreBoxes.forEach(box => {
+        box.addEventListener('click', function() {
+            const genreId = this.dataset.genreId;
+            
+            if (selectedGenres.has(genreId)) {
+                // Deselect
+                selectedGenres.delete(genreId);
+                this.classList.remove('selected');
+            } else {
+                // Select
+                selectedGenres.add(genreId);
+                this.classList.add('selected');
+            }
+            
+            // Update hidden input with selected genre IDs
+            document.getElementById('selected_genres').value = Array.from(selectedGenres).join(',');
+        });
+    });
+});
     </script>      
     </div>
     </div>

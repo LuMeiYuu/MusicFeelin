@@ -24,8 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute SQL statement
     if ($conn->query($sql) === TRUE) {
-        // Redirect to display information page
-        exit();
+        echo "<script>
+        alert('Data saved successfully!');
+        window.history.back();
+    </script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

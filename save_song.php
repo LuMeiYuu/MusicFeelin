@@ -31,7 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("sssii", $songName, $songArtist, $songLink, $genreId, $moodId);
     
         if ($stmt->execute()) {
-            echo "Song successfully saved!";
+            echo "<script>
+            alert('Data saved successfully!');
+            window.history.back();
+        </script>";
         } else {
             echo "Error saving song: " . $stmt->error;
         }
