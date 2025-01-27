@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $moodId = (int) $_POST['mood'];   // Cast to integer for safety
     
         // Insert into songs table
-        $stmt = $conn->prepare("INSERT INTO songs (songName, artist, spotifyLink, genre_id, mood_id) VALUES (?,?,?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO songs (songName, artist, songLink, genre_id, mood_id) VALUES (?,?,?,?,?)");
         $stmt->bind_param("sssii", $songName, $songArtist, $songLink, $genreId, $moodId);
     
         if ($stmt->execute()) {
