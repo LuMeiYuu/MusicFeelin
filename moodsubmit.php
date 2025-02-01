@@ -24,8 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute SQL statement
     if ($conn->query($sql) === TRUE) {
-        echo"<h1>YA DID IT MFER</h1> ";
-        exit();
+        echo "<script>
+            alert('Data saved successfully!');
+            window.history.back();
+        </script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

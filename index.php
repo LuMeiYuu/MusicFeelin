@@ -16,6 +16,7 @@
 </head>
 <body>
 <?php
+<?php
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -30,11 +31,11 @@ if ($conn->connect_error) {
 
 // Fetch genres for the dropdown
 // Fetch genres
-$sql_genres = "SELECT id, genre FROM genre";
+$sql_genres = "SELECT id, genre, color FROM genre";
 $result_genres = $conn->query($sql_genres);
 
 // Fetch moods
-$sql_moods = "SELECT id, mood FROM mood";
+$sql_moods = "SELECT id, mood, color FROM mood";
 $result_moods = $conn->query($sql_moods);
 
 // Check for errors (optional)
@@ -56,9 +57,23 @@ if (!$result_genres || !$result_moods) {
 
     
         <h3> Add a New Genre and color</h3>
+  <div class="logo">
+        <img src="logo.png">
+    </div>
+
+    <div class="main-div">
+<div class="side-div">
+   <div class="div2">
+    <img src="genre.png">
+
+    
+        <h3> Add a New Genre and color</h3>
 
         <form action="submit.php" method="post" class="reg-form">
+        <form action="submit.php" method="post" class="reg-form">
         <input type="text" id="genre" name="genre" required>
+       
+        
        
         
         <input type="color" id="color" name="color" value="#ff0000">
@@ -74,7 +89,16 @@ if (!$result_genres || !$result_moods) {
      <br>
     <div class="div2">
     <img src="mood.png">
+    </div>
+    
+     <br>
+    <div class="div2">
+    <img src="mood.png">
     <form action="moodsubmit.php" method="post" class="reg-form">
+        <h3> Add a New Mood and color</h3>
+              
+        <input type="text" id="mood" name="mood" placeholder="add mood here" required>
+       
         <h3> Add a New Mood and color</h3>
               
         <input type="text" id="mood" name="mood" placeholder="add mood here" required>
@@ -93,7 +117,15 @@ if (!$result_genres || !$result_moods) {
 
 
 <div class="div3">
+    </div>
+</div>
+        
+
+
+
+<div class="div3">
     <form method="POST" action="save_song.php">
+        <h3> Create a new song</h3>
         <h3> Create a new song</h3>
         <label for="songName">Song Name:</label>`
         <input type="text" id="songName" name="songName" required><br><br>
@@ -140,6 +172,11 @@ if (!$result_genres || !$result_moods) {
     </form>
 
 
+   
+        </div>
+    </div>
+    
+    <div class="main-div">
    
         </div>
     </div>
@@ -207,7 +244,33 @@ if (!$result_genres || !$result_moods) {
                 console.error('Error:', error);
             });
         });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const genreBoxes = document.querySelectorAll('.genre-box');
+    const selectedGenres = new Set();
+
+    genreBoxes.forEach(box => {
+        box.addEventListener('click', function() {
+            const genreId = this.dataset.genreId;
+            
+            if (selectedGenres.has(genreId)) {
+                // Deselect
+                selectedGenres.delete(genreId);
+                this.classList.remove('selected');
+            } else {
+                // Select
+                selectedGenres.add(genreId);
+                this.classList.add('selected');
+            }
+            
+            // Update hidden input with selected genre IDs
+            document.getElementById('selected_genres').value = Array.from(selectedGenres).join(',');
+        });
+    });
+});
     </script>      
+    </div>
     </div>
     </div>
 </body>

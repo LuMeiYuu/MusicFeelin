@@ -16,8 +16,22 @@ body{
     background-color: #c2e1fc;
     font-family: 'Cheese Market';
     color: #8b9196;
+    padding:0;
+}
+body{
+    background-color: #c2e1fc;
+    font-family: 'Cheese Market';
+    color: #8b9196;
 }
 
+div{
+    background-color: #ffc2d9;
+
+}
+form{
+    font-family: 'Cheese Market';
+    color: #8b9196;
+}
 div{
     background-color: #ffc2d9;
 
@@ -49,14 +63,32 @@ input{
 
 input[type=text]{
     padding: 1px 5px;
+    font-family: 'Cheese Market';
+    font-weight: lighter;
+    border: 1px solid #8b9196;
+    
+}
+
+input[type=text]{
+    padding: 1px 5px;
 }
 
 input[type=submit]{
     padding: 3px 10px;
     font-style: normal;
     margin: 2px;
+input[type=submit]{
+    padding: 3px 10px;
+    font-style: normal;
+    margin: 2px;
 }
 
+input[type=color]{
+   height: 20px;
+   width: 30px;
+   border-radius: 0px ;
+   padding: 0px;
+   margin: 0px;
 input[type=color]{
    height: 20px;
    width: 30px;
@@ -81,7 +113,28 @@ h1, h3{
 
 img{
     max-height: 200px;
+.logo{
+    background-color: #c2e1fc;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: fit-content;
+    
+
 }
+
+h1, h3{
+    font-weight: lighter;
+}
+
+
+img{
+    max-height: 200px;
+}
+.main-div{
+    background-color: #c2e1fc;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: fit-content;
 .main-div{
     background-color: #c2e1fc;
     margin-left: auto;
@@ -89,7 +142,10 @@ img{
     max-width: fit-content;
     display: flex;
     max-width: 70%;
+    max-width: 70%;
     justify-content: space-between;
+    padding: 30px;
+
     padding: 30px;
 
 }
@@ -98,8 +154,14 @@ img{
     border-radius: 30px;
     
 
+.main-div div {
+    border-radius: 30px;
+    
+
 }
 
+.main-div img{
+    max-width: 100px;
 .main-div img{
     max-width: 100px;
 }
@@ -111,8 +173,22 @@ padding: 10px;
 flex-direction: column;
 min-width: 50%;
 
+.side-div {
+background-color: #c2e1fc;
+display: flex;
+padding: 10px;
+flex-direction: column;
+min-width: 50%;
+
 }
 
+.div2{
+    padding: 10px;
+    box-sizing: border-box;
+    border: 3px solid white;
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 100%;
 .div2{
     padding: 10px;
     box-sizing: border-box;
