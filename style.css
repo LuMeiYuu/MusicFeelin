@@ -1,105 +1,145 @@
-* {
+            
+        
+@font-face {
+    font-family: 'Cheese Market' ;
+    src: url(Cheese\ Market.otf);
+    font-weight: normal;
+}
+ :root {
+    
+ }         
+*{
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    padding:0;
+}
+body{
+    background-color: #c2e1fc;
+    font-family: 'Cheese Market';
+    color: #8b9196;
 }
 
-body {
-    background-color: #f5f5f5;
-    padding: 20px;
+div{
+    background-color: #ffc2d9;
+
+}
+form{
+    font-family: 'Cheese Market';
+    color: #8b9196;
+}
+
+select{
+    
+    font-family: 'Cheese Market';
+    font-weight: lighter;
+    color: #8b9196;
+}
+
+option[selected]{
+    background-color:  #ffc2d9 ;
+}
+
+input{
+    min-height: 20px;
+    border-radius: 10px;
+    font-family: 'Cheese Market';
+    font-weight: lighter;
+    border: 1px solid #8b9196;
+    
+}
+
+input[type=text]{
+    padding: 1px 5px;
+}
+
+input[type=submit]{
+    padding: 3px 10px;
+    font-style: normal;
+    margin: 2px;
+}
+
+input[type=color]{
+   height: 20px;
+   width: 30px;
+   border-radius: 0px ;
+   padding: 0px;
+   margin: 0px;
+}
+
+.logo{
+    background-color: #c2e1fc;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: fit-content;
+    
+
+}
+
+h1, h3{
+    font-weight: lighter;
+}
+
+
+img{
+    max-height: 200px;
+}
+.main-div{
+    background-color: #c2e1fc;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: fit-content;
+    display: flex;
+    max-width: 70%;
+    justify-content: space-between;
+    padding: 30px;
+
+}
+
+.main-div div {
+    border-radius: 30px;
+    
+
+}
+
+.main-div img{
+    max-width: 100px;
+}
+
+.side-div {
+background-color: #c2e1fc;
+display: flex;
+padding: 10px;
+flex-direction: column;
+min-width: 50%;
+
+}
+
+.div2{
+    padding: 10px;
+    box-sizing: border-box;
+    border: 3px solid white;
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 100%;
+}
+
+.div3 {
+    padding: 10px;
+    box-sizing: border-box;
+    border: 3px solid white;
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 50%;
 }
 
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header {
+    min-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 3px solid white;
     text-align: center;
-    margin-bottom: 20px;
+    box-sizing: border-box;
+    
 }
 
-.search-container {
-    position: relative;
-    margin-bottom: 20px;
-}
 
-.search-input {
-    width: 100%;
-    padding: 10px 40px 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
 
-.filters {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-select {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.songs-container {
-    display: grid;
-    gap: 15px;
-}
-
-.song-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.song-info h3 {
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.song-info p {
-    color: #666;
-    font-size: 14px;
-}
-
-.song-tags {
-    display: flex;
-    gap: 8px;
-}
-
-.tag {
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.tag.mood { background-color: #e3f2fd; color: #1565c0; }
-.tag.genre { background-color: #e8f5e9; color: #2e7d32; }
-.tag.vibe { background-color: #f3e5f5; color: #6a1b9a; }
-
-@media (max-width: 600px) {
-    .song-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .song-tags {
-        flex-wrap: wrap;
-    }
-}

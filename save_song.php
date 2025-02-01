@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
     
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['songName'], $_POST['songArtist'], $_POST['songLink'], $_POST['genre'], $_POST['mood'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
         $songName = $_POST['songName'];
         $songArtist = $_POST['songArtist'];
         $songLink = $_POST['songLink'];

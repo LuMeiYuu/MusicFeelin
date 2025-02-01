@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song Categorizer</title>
-    <link type="text/css" href="style.css">
+    <link type="text/css" href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/css/multi-select-tag.css">
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/js/multi-select-tag.js"></script>
+    <style>
+        option[selected]{
+    background-color:  #ffc2d9 ;
+}</style>
+   
    
 </head>
 <body>
-    <?php
+<?php
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -38,30 +45,22 @@ if (!$result_genres || !$result_moods) {
 
 
 ?>
+  <div class="logo">
+        <img src="logo.png">
+    </div>
 
-    <form action="submit.php" method="post" class="reg-form">
-        <h1> Add a New Genre</h1>
-        <label for="name">Name:</label>
-        
+    <div class="main-div">
+<div class="side-div">
+   <div class="div2">
+    <img src="genre.png">
+
+    
+        <h3> Add a New Genre and color</h3>
+
+        <form action="submit.php" method="post" class="reg-form">
         <input type="text" id="genre" name="genre" required>
-        <br>
-        <label for="name">Pick A Color:</label>
-        <input type="color" id="color" name="color" value="#ff0000">
        
-       
-        <br> 
-        <input type="submit" value="Submit">
-
-    </form>
-
-
-    <form action="moodsubmit.php" method="post" class="reg-form">
-        <h1> Add a New Mood</h1>
-        <label for="name">Add A New Mood:</label>
         
-        <input type="text" id="mood" name="mood" required>
-        <br>
-        <label for="name">Pick A Color:</label>
         <input type="color" id="color" name="color" value="#ff0000">
        
        
@@ -70,8 +69,32 @@ if (!$result_genres || !$result_moods) {
 
     </form>
 
+    </div>
+    
+     <br>
+    <div class="div2">
+    <img src="mood.png">
+    <form action="moodsubmit.php" method="post" class="reg-form">
+        <h3> Add a New Mood and color</h3>
+              
+        <input type="text" id="mood" name="mood" placeholder="add mood here" required>
+       
+        <input type="color" id="color" name="color" value="#ff0000">
+       
+       
+        <br> 
+        <input type="submit" value="Submit">
+
+    </form>
+    </div>
+</div>
+        
+
+
+
+<div class="div3">
     <form method="POST" action="save_song.php">
-        <h1> Create a new song</h1>
+        <h3> Create a new song</h3>
         <label for="songName">Song Name:</label>`
         <input type="text" id="songName" name="songName" required><br><br>
         <label for="songArtist">Song Artist:</label>
@@ -82,7 +105,7 @@ if (!$result_genres || !$result_moods) {
         
 
         <label for="genre">Choose Genre:</label>
-        <select id="genre" name="genre" required>
+        <select id="genre" name="genre" multiple size="5">
             <option value="">--Select Genre--</option>
 
             <?php
@@ -97,7 +120,7 @@ if (!$result_genres || !$result_moods) {
             
         </select><br><br>
         <label for="mood">Choose Mood:</label>
-        <select id="mood" name="mood" required>
+        <select id="mood" name="mood" required >
         
             <option value="">--Select mood--</option>
 
@@ -113,10 +136,15 @@ if (!$result_genres || !$result_moods) {
             
         </select><br>
 
-        <button type="submit">Save Song</button>
+        <input type="submit" placeholder="Save Song">
     </form>
 
 
+   
+        </div>
+    </div>
+    
+    <div class="main-div">
     <div class="container">
         <div class="header">
             <h1>Song Categorizer</h1>
@@ -156,7 +184,9 @@ if (!$result_genres || !$result_moods) {
     <div id="results">
         <!-- Filtered songs will be displayed here -->
     </div>
-
+    <script>
+    new MultiSelectTag('mood')  // id
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         // Handle the filter button click
@@ -178,9 +208,7 @@ if (!$result_genres || !$result_moods) {
             });
         });
     </script>      
-        </div>
     </div>
-
-    
+    </div>
 </body>
 </html>
